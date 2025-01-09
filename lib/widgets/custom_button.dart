@@ -5,11 +5,13 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final String text;
   final Color textColor;
+  final void Function() onPressed;
   const CustomButton({
     super.key,
     this.color = kPrimaryColor,
     required this.text,
     this.textColor = Colors.black,
+    required this.onPressed,
   });
 
   @override
@@ -21,7 +23,7 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         shape: const RoundedRectangleBorder(),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(

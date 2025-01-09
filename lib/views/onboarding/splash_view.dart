@@ -2,6 +2,8 @@ import 'package:day_task/constants.dart';
 import 'package:day_task/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
+const String splashViewRoute = '/splash';
+
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
@@ -60,7 +62,10 @@ class SplashView extends StatelessWidget {
               const Spacer(
                 flex: 2,
               ),
-              const CustomButton(
+              CustomButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/log_in');
+                },
                 text: 'Let\'s Start',
               ),
               const Spacer(),

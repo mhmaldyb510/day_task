@@ -1,4 +1,5 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/views/onboarding/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -12,12 +13,15 @@ class DayTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        splashViewRoute: (context) => const SplashView(),
+        logInViewRoute: (context) => const LogInView(),
+      },
       theme: ThemeData(
-        fontFamily: 'Pilat Extended',
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
       ),
-      home: const SplashView(),
+      initialRoute: '/splash',
     );
   }
 }
