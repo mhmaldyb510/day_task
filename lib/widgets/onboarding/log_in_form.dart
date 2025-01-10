@@ -11,42 +11,69 @@ class LogInForm extends StatefulWidget {
 }
 
 class _LogInFormState extends State<LogInForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
+      autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          const Text(
-            'Email Address',
-            style: TextStyle(
-              color: kTextColor,
-              fontSize: 16,
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Email Address',
+              style: TextStyle(
+                color: kTextColor,
+                fontSize: 16,
+              ),
             ),
           ),
           const SizedBox(
             height: 8,
           ),
-          const CustomTextFormField(
+          CustomTextFormField(
             icon: Icons.email,
             hintText: 'example@daytask.com',
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please Enter Email.';
+              } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                  .hasMatch(value)) {
+                return 'valid email address';
+              }
+              return null;
+            },
           ),
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            'Password',
-            style: TextStyle(
-              color: kTextColor,
-              fontSize: 16,
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Password',
+              style: TextStyle(
+                color: kTextColor,
+                fontSize: 16,
+              ),
             ),
           ),
           const SizedBox(
             height: 8,
           ),
-          const CustomTextFormField(
+          CustomTextFormField(
             icon: Icons.lock,
             hintText: '********',
             isPassword: true,
+            textInputAction: TextInputAction.done,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please Enter Password';
+              }
+              return null;
+            },
           ),
           const SizedBox(
             height: 8,
@@ -68,9 +95,21 @@ class _LogInFormState extends State<LogInForm> {
             height: 20,
           ),
           CustomButton(
-            text: 'Log in',
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                autovalidateMode = AutovalidateMode.always;
+              });
+            },
             color: kPrimaryColor,
+            child: const Text(
+              'Log in',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),

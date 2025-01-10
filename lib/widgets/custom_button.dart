@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final Color color;
-  final String text;
-  final Color textColor;
+  final Widget? child;
   final void Function() onPressed;
+  final BorderSide? side;
   const CustomButton({
     super.key,
     this.color = kPrimaryColor,
-    required this.text,
-    this.textColor = Colors.black,
     required this.onPressed,
+    this.child,
+    this.side,
   });
 
   @override
@@ -22,16 +22,11 @@ class CustomButton extends StatelessWidget {
         backgroundColor: color,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         shape: const RoundedRectangleBorder(),
+        side: side,
+        elevation: 0,
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(
-            color: textColor,
-            fontSize: 16,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.bold),
-      ),
+      child: child,
     );
   }
 }

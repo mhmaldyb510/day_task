@@ -6,12 +6,15 @@ class CustomTextFormField extends StatefulWidget {
   final IconData? icon;
   final String? hintText;
   final bool isPassword;
+  final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
   const CustomTextFormField({
     super.key,
     this.color = kSecondaryColor,
     this.icon,
     this.hintText,
     this.isPassword = false,
+    this.textInputAction, this.validator,
   });
 
   @override
@@ -29,6 +32,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: widget.textInputAction,
       obscureText: _isObscure,
       style: const TextStyle(
         color: Colors.white,
@@ -71,6 +75,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
         ),
       ),
+      validator: widget.validator,
     );
   }
 }
