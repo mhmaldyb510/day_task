@@ -3,14 +3,14 @@ import 'package:day_task/widgets/custom_button.dart';
 import 'package:day_task/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class LogInForm extends StatefulWidget {
-  const LogInForm({super.key});
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
 
   @override
-  State<LogInForm> createState() => _LogInFormState();
+  State<SignUpForm> createState() => _LogInFormState();
 }
 
-class _LogInFormState extends State<LogInForm> {
+class _LogInFormState extends State<SignUpForm> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -20,6 +20,33 @@ class _LogInFormState extends State<LogInForm> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Full Name',
+              style: TextStyle(
+                color: kTextColor,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          CustomTextFormField(
+            icon: Icons.email,
+            hintText: 'Mohamed Naser Aldeeb',
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please Enter Your Name.';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -76,22 +103,6 @@ class _LogInFormState extends State<LogInForm> {
             },
           ),
           const SizedBox(
-            height: 8,
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: kTextColor,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
             height: 20,
           ),
           CustomButton(
@@ -102,7 +113,7 @@ class _LogInFormState extends State<LogInForm> {
             },
             color: kPrimaryColor,
             child: const Text(
-              'Log In',
+              'Sign Up',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,

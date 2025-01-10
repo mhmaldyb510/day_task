@@ -1,13 +1,13 @@
 import 'package:day_task/constants.dart';
 import 'package:day_task/widgets/custom_button.dart';
-import 'package:day_task/widgets/onboarding/log_in_form.dart';
+import 'package:day_task/widgets/onboarding/sign_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const String logInViewRoute = '/log_in';
+const String signUpViewRoute = '/sign_up';
 
-class LogInView extends StatelessWidget {
-  const LogInView({super.key});
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,7 @@ class LogInView extends StatelessWidget {
                   height: 20,
                 ),
                 const Text(
-                  'Welcome Back!',
+                  'Create your account',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -41,7 +41,7 @@ class LogInView extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const LogInForm(),
+                const SignUpForm(),
                 const SizedBox(
                   height: 20,
                 ),
@@ -102,17 +102,17 @@ class LogInView extends StatelessWidget {
                   alignment: Alignment.center,
                   child: GestureDetector(
                     onTap: () =>
-                        Navigator.pushReplacementNamed(context, '/sign_up'),
+                        Navigator.pushReplacementNamed(context, '/log_in'),
                     child: RichText(
                       text: const TextSpan(
-                        text: 'Don\'t have an account? ',
+                        text: 'Already have an account ',
                         style: TextStyle(
                           color: kTextColor,
                           fontSize: 16,
                         ),
                         children: [
                           TextSpan(
-                            text: 'Sign Up',
+                            text: 'Log In',
                             style: TextStyle(
                               color: kPrimaryColor,
                               fontWeight: FontWeight.bold,
