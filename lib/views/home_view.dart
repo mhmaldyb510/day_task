@@ -159,7 +159,7 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 160,
+              height: 170,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,

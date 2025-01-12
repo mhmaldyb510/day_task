@@ -21,6 +21,7 @@ class CompletedTaskCard extends StatelessWidget {
         height: 200,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
@@ -28,10 +29,10 @@ class CompletedTaskCard extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 18,
-                color: foregroundColor,
-                fontFamily: 'Pilat Extended',
-              ),
+                  fontSize: 18,
+                  color: foregroundColor,
+                  fontFamily: 'Pilat Extended',
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             Row(
