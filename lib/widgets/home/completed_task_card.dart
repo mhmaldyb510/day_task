@@ -1,3 +1,4 @@
+import 'package:day_task/widgets/home/avatar_list.dart';
 import 'package:flutter/material.dart';
 
 class CompletedTaskCard extends StatelessWidget {
@@ -45,13 +46,23 @@ class CompletedTaskCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 6),
-                Text(
-                  'to do: avatar list',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: foregroundColor,
+                const SizedBox(
+                  height: 20,
+                  width: 90,
+                  child: AvatarList(
+                    avatars: [
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                      'assets/images/profile.png',
+                    ],
+                    maxAvatars: 90 ~/ 16,
                   ),
-                ),
+                )
               ],
             ),
             const SizedBox(height: 16),
