@@ -1,4 +1,5 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/massages/messages_view.dart';
 import 'package:day_task/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,6 +17,7 @@ class _MainScaffoldState extends State<MainScaffold> {
   int _index = 0;
   final List<Widget> bodies = const [
     HomeView(),
+    MessagesView(),
   ];
   @override
   Widget build(BuildContext context) {
