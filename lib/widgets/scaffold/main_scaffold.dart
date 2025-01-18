@@ -33,6 +33,8 @@ class _MainScaffoldState extends State<MainScaffold> {
         showUnselectedLabels: true,
         unselectedItemColor: const Color(0xff617d89),
         enableFeedback: true,
+        selectedFontSize: 10,
+        unselectedFontSize: 10,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
