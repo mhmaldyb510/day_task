@@ -1,14 +1,14 @@
 import 'package:day_task/constants.dart';
 import 'package:flutter/material.dart';
 
-class AppBarButton extends StatelessWidget {
+class MessageViewButton extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
   final VoidCallback? onPressed;
   final double? width;
   final double? height;
-  const AppBarButton({
+  const MessageViewButton({
     super.key,
     required this.title,
     this.backgroundColor = kPrimaryColor,

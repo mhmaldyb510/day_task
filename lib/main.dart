@@ -1,5 +1,5 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/views/home_view.dart';
+import 'package:day_task/views/home/home_view.dart';
 import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/views/onboarding/sign_up_view.dart';
 import 'package:day_task/views/onboarding/splash_view.dart';

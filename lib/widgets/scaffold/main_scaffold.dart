@@ -1,6 +1,6 @@
 import 'package:day_task/constants.dart';
 import 'package:day_task/views/massages/messages_view.dart';
-import 'package:day_task/views/home_view.dart';
+import 'package:day_task/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

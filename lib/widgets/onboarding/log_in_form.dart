@@ -1,6 +1,6 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/widgets/custom_button.dart';
-import 'package:day_task/widgets/custom_text_form_field.dart';
+import 'package:day_task/widgets/misc/custom_button.dart';
+import 'package:day_task/widgets/onboarding/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class LogInForm extends StatefulWidget {

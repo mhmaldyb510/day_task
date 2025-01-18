@@ -1,5 +1,5 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/widgets/custom_button.dart';
+import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:day_task/widgets/onboarding/log_in_form.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

@@ -1,6 +1,6 @@
 import 'package:day_task/constants.dart';
 import 'package:day_task/views/massages/chat_body.dart';
-import 'package:day_task/widgets/app_bar_button.dart';
+import 'package:day_task/widgets/massages/messages_view_button.dart';
 import 'package:flutter/material.dart';
 
 class MessagesView extends StatefulWidget {
@@ -40,7 +40,7 @@ class _MessagesViewState extends State<MessagesView> {
                 Row(
                   children: [
                     const Spacer(),
-                    AppBarButton(
+                    MessageViewButton(
                       onPressed: () {
                         setState(() {
                           _selectedIndex = 0;
@@ -54,7 +54,7 @@ class _MessagesViewState extends State<MessagesView> {
                           _selectedIndex != 0 ? Colors.white : Colors.black,
                     ),
                     const Spacer(),
-                    AppBarButton(
+                    MessageViewButton(
                       onPressed: () {
                         setState(() {
                           _selectedIndex = 1;
@@ -93,7 +93,7 @@ class _MessagesViewState extends State<MessagesView> {
               top: 20,
               bottom: 100,
             ),
-            child: AppBarButton(
+            child: MessageViewButton(
               title: 'Start Chat',
               onPressed: () {},
             ),

@@ -1,5 +1,5 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/widgets/custom_button.dart';
+import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:flutter/material.dart';
 
 const String splashViewRoute = '/splash';
