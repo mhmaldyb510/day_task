@@ -1,4 +1,4 @@
-import 'package:day_task/views/massages/chat_tile.dart';
+import 'package:day_task/widgets/massages/chat_tile.dart';
 import 'package:flutter/material.dart';
 
 class ChatBody extends StatelessWidget {

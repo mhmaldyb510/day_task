@@ -1,5 +1,7 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/views/massages/chat_body.dart';
+
+import 'package:day_task/widgets/massages/chat_body.dart';
+
 import 'package:day_task/widgets/massages/messages_view_button.dart';
 import 'package:flutter/material.dart';
 
