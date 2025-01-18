@@ -2,27 +2,38 @@ import 'package:day_task/constants.dart';
 import 'package:flutter/material.dart';
 
 class ChatTile extends StatelessWidget {
-  const ChatTile({super.key});
+  final bool newMessage;
+  final String name;
+  final String lastMessage;
+  final String image;
+  const ChatTile({
+    super.key,
+    this.newMessage = false,
+    this.name = '',
+    this.lastMessage = '',  this.image = 'assets/images/profile.png',
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const ListTile(
-      contentPadding: EdgeInsets.all(8),
-      leading: CircleAvatar(
-        backgroundImage: AssetImage('assets/images/profile.png'),
+    return ListTile(
+      contentPadding: const EdgeInsets.all(8),
+      leading:  CircleAvatar(
+        backgroundImage: AssetImage(
+          image
+        ),
       ),
       title: Text(
-        'Robert Williams',
-        style: TextStyle(
+        name,
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
         ),
       ),
       subtitle: Text(
-        'Hello, how are you? I am fine. What about you?',
+        lastMessage,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
+        style: const TextStyle(
           color: kTextColor,
         ),
       ),
@@ -32,17 +43,19 @@ class ChatTile extends StatelessWidget {
           Text(
             '32 min',
             style: TextStyle(
-              color: Colors.white,
+              color: newMessage ? Colors.white : Colors.white70,
               fontSize: 10,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 1,
           ),
-          CircleAvatar(
-            backgroundColor: kPrimaryColor,
-            radius: 3,
-          ),
+          newMessage
+              ? const CircleAvatar(
+                  backgroundColor: kPrimaryColor,
+                  radius: 3,
+                )
+              : const SizedBox(),
         ],
       ),
     );

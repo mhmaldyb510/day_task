@@ -1,6 +1,7 @@
 import 'package:day_task/constants.dart';
 
 import 'package:day_task/widgets/massages/chat_body.dart';
+import 'package:day_task/widgets/massages/groups_body.dart';
 
 import 'package:day_task/widgets/massages/messages_view_button.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +84,7 @@ class _MessagesViewState extends State<MessagesView> {
               index: _selectedIndex,
               children: const [
                 ChatBody(),
+                GroupsBody(),
               ],
             ),
           ),
@@ -96,7 +98,7 @@ class _MessagesViewState extends State<MessagesView> {
               bottom: 100,
             ),
             child: MessageViewButton(
-              title: 'Start Chat',
+              title: _selectedIndex == 0 ? 'Start Chat' : 'New Group',
               onPressed: () {},
             ),
           ),

@@ -1,8 +1,8 @@
 import 'package:day_task/widgets/massages/chat_tile.dart';
 import 'package:flutter/material.dart';
 
-class ChatBody extends StatelessWidget {
-  const ChatBody({super.key});
+class GroupsBody extends StatelessWidget {
+  const GroupsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +11,9 @@ class ChatBody extends StatelessWidget {
       itemCount: 20,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => const ChatTile(
-        newMessage: true,
-        name: 'John Doe',
-        lastMessage: 'Hello, how are you?',
+        name: 'Flutter Community',
+        lastMessage: 'lets build an app together',
+        image: 'assets/images/flutter.png',
       ),
     );
   }
