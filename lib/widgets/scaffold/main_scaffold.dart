@@ -1,4 +1,5 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/calender/calender_view.dart';
 import 'package:day_task/views/massages/messages_view.dart';
 import 'package:day_task/views/home/home_view.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class _MainScaffoldState extends State<MainScaffold> {
   final List<Widget> bodies = const [
     HomeView(),
     MessagesView(),
+    Center(child: Text('Add')),
+    CalenderView(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -63,9 +66,6 @@ class _MainScaffoldState extends State<MainScaffold> {
         ],
         currentIndex: _index,
         onTap: (value) {
-          if (value == 2) {
-            return;
-          }
           setState(() {
             _index = value;
           });
