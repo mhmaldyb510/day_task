@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 class AvatarList extends StatelessWidget {
   final int? maxAvatars;
   final List<String> avatars;
-  const AvatarList({super.key, required this.avatars, this.maxAvatars});
+  final Color borderColor;
+  const AvatarList({
+    super.key,
+    required this.avatars,
+    this.maxAvatars,
+    this.borderColor = kPrimaryColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +44,7 @@ class AvatarList extends StatelessWidget {
             left: index * 15.0,
             child: CircleAvatar(
               radius: 11,
-              backgroundColor: kPrimaryColor,
+              backgroundColor: borderColor,
               child: CircleAvatar(
                 radius: 10,
                 backgroundImage: AssetImage(avatars[index]),

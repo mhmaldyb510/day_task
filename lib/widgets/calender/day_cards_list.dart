@@ -30,34 +30,30 @@ class _DayCardsListState extends State<DayCardsList> {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SizedBox(
-          height: 60,
-          child: ListView.builder(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            itemCount: getDaysInMonth(
+      child: SizedBox(
+        height: 60,
+        child: ListView.builder(
+          controller: _scrollController,
+          scrollDirection: Axis.horizontal,
+          itemCount: getDaysInMonth(
+            DateTime.now().year,
+            DateTime.now().month,
+          ),
+          itemBuilder: (context, index) {
+            DateTime date = DateTime(
               DateTime.now().year,
               DateTime.now().month,
-            ),
-            itemBuilder: (context, index) {
-              DateTime date = DateTime(
-                DateTime.now().year,
-                DateTime.now().month,
-                index + 1,
-              );
-              String dayName = DateFormat('EEEE').format(date);
-              return DayCard(
-                dayNumber: index + 1,
-                day: dayName.substring(0, 3),
-                backgroundColor:
-                    index == DateTime.now().day - 1 ? kPrimaryColor : null,
-                textColor:
-                    index == DateTime.now().day - 1 ? Colors.black : null,
-              );
-            },
-          ),
+              index + 1,
+            );
+            String dayName = DateFormat('EEEE').format(date);
+            return DayCard(
+              dayNumber: index + 1,
+              day: dayName.substring(0, 3),
+              backgroundColor:
+                  index == DateTime.now().day - 1 ? kPrimaryColor : null,
+              textColor: index == DateTime.now().day - 1 ? Colors.black : null,
+            );
+          },
         ),
       ),
     );
