@@ -5,8 +5,14 @@ import 'package:day_task/views/onboarding/sign_up_view.dart';
 import 'package:day_task/views/onboarding/splash_view.dart';
 import 'package:day_task/widgets/scaffold/main_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const DayTask());
 }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993079830678",
+    "project_id": "day-task-fd751",
+    "storage_bucket": "day-task-fd751.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993079830678:android:37ba0796ca3aa8901ffab7",
+        "android_client_info": {
+          "package_name": "com.example.day_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993079830678-dh1k6l8ji8ffs1hvfop72volqe0tr8e4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYqUcVxOcko4M85RhuUObuAJdU8lD_HTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993079830678-dh1k6l8ji8ffs1hvfop72volqe0tr8e4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
