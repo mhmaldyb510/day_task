@@ -8,13 +8,14 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
   final TextInputAction? textInputAction;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   const CustomTextFormField({
     super.key,
     this.color = kSecondaryColor,
     this.icon,
     this.hintText,
     this.isPassword = false,
-    this.textInputAction, this.validator,
+    this.textInputAction, this.validator, this.onChanged,
   });
 
   @override
@@ -34,6 +35,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       textInputAction: widget.textInputAction,
       obscureText: _isObscure,
+      onChanged: widget.onChanged,
       style: const TextStyle(
         color: Colors.white,
         fontFamily: 'Inter',

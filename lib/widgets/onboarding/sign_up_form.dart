@@ -1,7 +1,9 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/cubits/sign_up/sign_up_cubit.dart';
 import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:day_task/widgets/onboarding/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -11,6 +13,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _LogInFormState extends State<SignUpForm> {
+  String? name,email, password;
   final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -37,6 +40,7 @@ class _LogInFormState extends State<SignUpForm> {
             icon: Icons.email,
             hintText: 'Mohamed Naser Aldeeb',
             textInputAction: TextInputAction.next,
+            onChanged: (p0) => name = p0,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please Enter Your Name.';
@@ -61,9 +65,11 @@ class _LogInFormState extends State<SignUpForm> {
             height: 8,
           ),
           CustomTextFormField(
+            
             icon: Icons.email,
             hintText: 'example@daytask.com',
             textInputAction: TextInputAction.next,
+            onChanged: (p0) => email = p0,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please Enter Email.';
@@ -95,6 +101,7 @@ class _LogInFormState extends State<SignUpForm> {
             hintText: '********',
             isPassword: true,
             textInputAction: TextInputAction.done,
+            onChanged: (p0) => password = p0,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please Enter Password';
@@ -105,20 +112,32 @@ class _LogInFormState extends State<SignUpForm> {
           const SizedBox(
             height: 20,
           ),
-          CustomButton(
-            onPressed: () {
-              setState(() {
-                autovalidateMode = AutovalidateMode.always;
-              });
+          BlocListener<SignUpCubit, SignUpState>(
+            listener: (context, state) {
+              
             },
-            color: kPrimaryColor,
-            child: const Text(
-              'Sign Up',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.bold,
+            child: CustomButton(
+              onPressed: () {
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                  if(_formKey.currentState!.validate()){
+                    context.read<SignUpCubit>().signUp(
+                      email: email!,
+                      password: password!,
+                      name: name!,
+                    );
+                  }
+                });
+              },
+              color: kPrimaryColor,
+              child: const Text(
+                'Sign Up',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

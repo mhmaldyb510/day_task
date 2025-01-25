@@ -4,15 +4,17 @@ import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/views/onboarding/sign_up_view.dart';
 import 'package:day_task/views/onboarding/splash_view.dart';
 import 'package:day_task/widgets/scaffold/main_scaffold.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // await FirebaseAuth.instance.signOut();
   runApp(const DayTask());
 }
 
@@ -35,7 +37,9 @@ class DayTask extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
       ),
-      initialRoute: '/main_scaffold',
+      initialRoute: FirebaseAuth.instance.currentUser == null
+          ? '/splash'
+          : '/main_scaffold',
     );
   }
 }
