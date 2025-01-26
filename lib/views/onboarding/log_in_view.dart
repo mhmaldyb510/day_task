@@ -1,5 +1,6 @@
 import 'package:day_task/constants.dart';
 import 'package:day_task/cubits/log_in/log_in_cubit.dart';
+import 'package:day_task/helpers/functions.dart';
 import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:day_task/widgets/onboarding/log_in_form.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,21 @@ class _LogInViewState extends State<LogInView> {
                         height: 20,
                       ),
                       CustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          try {
+                            signInWithGoogle();
+                            Navigator.pushReplacementNamed(
+                              context,
+                              '/main_scaffold',
+                            );
+                          } on Exception catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(e.toString()),
+                              ),
+                            );
+                          }
+                        },
                         color: kBackgroundColor,
                         side: const BorderSide(color: Colors.white, width: 2),
                         child: const Row(

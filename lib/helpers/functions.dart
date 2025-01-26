@@ -1,4 +1,5 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 int getDaysInMonth(int year, int month) {
   // Returns the number of days in the specified month of a given year.
@@ -22,4 +23,27 @@ int getDaysInMonth(int year, int month) {
       firstDayNextMonth.subtract(const Duration(days: 1));
 
   return lastDayCurrentMonth.day;
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  try {
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+  
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+  var user = await FirebaseAuth.instance.signInWithCredential(credential);
+  await user.user?.updateProfile(displayName: googleUser?.displayName);
+  // Once signed in, return the UserCredential
+  return user;
+} on Exception catch (e) {
+  return Future.error(e.toString());
+}
 }

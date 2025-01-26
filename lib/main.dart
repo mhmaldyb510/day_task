@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:day_task/constants.dart';
 import 'package:day_task/views/home/home_view.dart';
 import 'package:day_task/views/onboarding/log_in_view.dart';
@@ -14,12 +16,18 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseAuth.instance.signOut();
+  // FirebaseAuth.instance.signOut();
+  // FirebaseAuth.instance.currentUser?.delete();
+  log(FirebaseAuth.instance.currentUser.toString());
+
   runApp(const DayTask());
 }
 
 class DayTask extends StatelessWidget {
   const DayTask({super.key});
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +45,7 @@ class DayTask extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
       ),
-      initialRoute: FirebaseAuth.instance.currentUser == null
-          ? '/splash'
-          : '/main_scaffold',
+      initialRoute: FirebaseAuth.instance.currentUser != null ? '/main_scaffold' : '/splash',
     );
   }
 }
