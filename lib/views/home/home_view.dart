@@ -1,6 +1,7 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/widgets/home/completed_task_card.dart';
-import 'package:day_task/widgets/home/task_card.dart';
+import 'package:day_task/models/task_model.dart';
+import 'package:day_task/widgets/tasks/completed_task_card.dart';
+import 'package:day_task/widgets/tasks/task_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -127,7 +128,33 @@ class HomeView extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4,
                   itemBuilder: (context, index) {
-                    return const TaskCard();
+                    return TaskCard(
+                      task: TaskModel(
+                          title: 'Task Management app with Flutter',
+                          description:
+                              'An advanced task management app with Flutter to manage projects and divide it into small tasks.',
+                          startDate: DateTime.now(),
+                          completed: [
+                            'Home page',
+                            'Calendar page',
+                            'Messages page',
+                            'Notifications page',
+                            'Firebase authentication',
+                            'on boarding',
+                          ],
+                          notCompleted: [
+                            'Task info page',
+                            'store Tasks in firebase',
+                            'Massaging view',
+                            'New Chat view',
+                            'Create new project',
+                            'Profile page',
+                            'App Logic',
+                          ],
+                          collaborators: const [
+                            'assets/images/profile.png',
+                          ]),
+                    );
                   },
                 ),
                 const SizedBox(height: 20),

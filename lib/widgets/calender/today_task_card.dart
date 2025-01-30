@@ -1,5 +1,5 @@
 import 'package:day_task/constants.dart';
-import 'package:day_task/widgets/home/avatar_list.dart';
+import 'package:day_task/widgets/tasks/avatar_list.dart';
 import 'package:flutter/material.dart';
 
 class TodayTaskCard extends StatelessWidget {

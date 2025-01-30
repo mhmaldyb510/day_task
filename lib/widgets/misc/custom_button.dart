@@ -5,6 +5,8 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final Widget? child;
   final void Function() onPressed;
+  final double width;
+  final double height;
   final BorderSide? side;
   const CustomButton({
     super.key,
@@ -12,13 +14,15 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.child,
     this.side,
+    this.width = double.infinity,
+    this.height = 50,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(double.maxFinite, 50),
+        fixedSize: Size(width, height),
         backgroundColor: color,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         shape: const RoundedRectangleBorder(),

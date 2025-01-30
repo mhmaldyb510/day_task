@@ -5,11 +5,13 @@ class AvatarList extends StatelessWidget {
   final int? maxAvatars;
   final List<String> avatars;
   final Color borderColor;
+  final double radius;
   const AvatarList({
     super.key,
     required this.avatars,
     this.maxAvatars,
     this.borderColor = kPrimaryColor,
+    this.radius = 11,
   });
 
   @override
@@ -43,10 +45,10 @@ class AvatarList extends StatelessWidget {
           return Positioned(
             left: index * 15.0,
             child: CircleAvatar(
-              radius: 11,
+              radius: radius,
               backgroundColor: borderColor,
               child: CircleAvatar(
-                radius: 10,
+                radius: radius - 1,
                 backgroundImage: AssetImage(avatars[index]),
               ),
             ),

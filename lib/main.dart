@@ -5,6 +5,7 @@ import 'package:day_task/views/home/home_view.dart';
 import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/views/onboarding/sign_up_view.dart';
 import 'package:day_task/views/onboarding/splash_view.dart';
+import 'package:day_task/views/tasks/task_details.dart';
 import 'package:day_task/widgets/scaffold/main_scaffold.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class DayTask extends StatelessWidget {
         signUpViewRoute: (context) => const SignUpView(),
         mainScaffold: (context) => const MainScaffold(),
         homeViewRoute: (context) => const HomeView(),
+        taskDetailsViewRoute: (context) => const TaskDetails(),
       },
       theme: ThemeData(
         splashFactory: InkRipple.splashFactory,
