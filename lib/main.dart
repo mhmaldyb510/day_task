@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/chat/chat_view.dart';
 import 'package:day_task/views/home/home_view.dart';
 import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/views/onboarding/sign_up_view.dart';
@@ -40,6 +41,7 @@ class DayTask extends StatelessWidget {
         mainScaffold: (context) => const MainScaffold(),
         homeViewRoute: (context) => const HomeView(),
         taskDetailsViewRoute: (context) => const TaskDetails(),
+        chatViewRoute: (context) => const ChatView(),
       },
       theme: ThemeData(
         splashFactory: InkRipple.splashFactory,

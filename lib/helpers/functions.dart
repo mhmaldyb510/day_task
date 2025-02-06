@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -46,4 +47,23 @@ Future<UserCredential> signInWithGoogle() async {
 } on Exception catch (e) {
   return Future.error(e.toString());
 }
+}
+
+
+String getDifferenceBetweenTwoDates(DateTime startDate, DateTime endDate) {
+  Duration difference = endDate.difference(startDate);
+  int days = difference.inDays;
+  int hours = difference.inHours;
+  int minutes = difference.inMinutes;
+  int seconds = difference.inSeconds;
+  if (days == 0) {
+    if (hours == 0) {
+      if (minutes == 0) {
+        return '$seconds seconds';
+      }
+      return '$minutes mins';
+    }
+    return '$hours hours';
+  }
+  return '$days days';
 }

@@ -15,48 +15,51 @@ class ChatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.all(8),
-      leading:  CircleAvatar(
-        backgroundImage: AssetImage(
-          image
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed('/chat_view', arguments: name),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(8),
+        leading:  CircleAvatar(
+          backgroundImage: AssetImage(
+            image
+          ),
         ),
-      ),
-      title: Text(
-        name,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16,
+        title: Text(
+          name,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
         ),
-      ),
-      subtitle: Text(
-        lastMessage,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: kTextColor,
+        subtitle: Text(
+          lastMessage,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: kTextColor,
+          ),
         ),
-      ),
-      trailing: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            '32 min',
-            style: TextStyle(
-              color: newMessage ? Colors.white : Colors.white70,
-              fontSize: 10,
+        trailing: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              '32 min',
+              style: TextStyle(
+                color: newMessage ? Colors.white : Colors.white70,
+                fontSize: 10,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 1,
-          ),
-          newMessage
-              ? const CircleAvatar(
-                  backgroundColor: kPrimaryColor,
-                  radius: 3,
-                )
-              : const SizedBox(),
-        ],
+            const SizedBox(
+              height: 1,
+            ),
+            newMessage
+                ? const CircleAvatar(
+                    backgroundColor: kPrimaryColor,
+                    radius: 3,
+                  )
+                : const SizedBox(),
+          ],
+        ),
       ),
     );
   }
