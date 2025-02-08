@@ -63,14 +63,18 @@ class SplashView extends StatelessWidget {
                 flex: 2,
               ),
               CustomButton(
+                width: double.infinity,
                 onPressed: () {
                   Navigator.pushNamed(context, '/log_in');
                 },
-                child: const Text('Let\'s Start',style:  TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.bold),),
+                child: const Text(
+                  'Let\'s Start',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               const Spacer(),
             ],

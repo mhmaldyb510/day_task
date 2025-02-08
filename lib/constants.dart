@@ -7,3 +7,9 @@ const kSecondaryColor = Color(0xff455A64);
 const kBackgroundColor = Color(0XFF212832);
 
 const kTextColor = Color(0XFF8CAAB9);
+
+const kPrimaryTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);

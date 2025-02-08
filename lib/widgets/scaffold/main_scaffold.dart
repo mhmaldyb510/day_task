@@ -68,9 +68,14 @@ class _MainScaffoldState extends State<MainScaffold> {
         ],
         currentIndex: _index,
         onTap: (value) {
-          setState(() {
-            _index = value;
-          });
+          value != 2
+              ? setState(() {
+                  _index = value;
+                })
+              : Navigator.pushNamed(
+                  context,
+                  '/add_task_view',
+                );
         },
       ),
     );
