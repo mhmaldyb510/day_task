@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_task/constants.dart';
 import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:day_task/widgets/tasks/add_member_tile.dart';
 import 'package:day_task/widgets/tasks/create_task_text_field.dart';
 import 'package:day_task/widgets/tasks/date_selection_tile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class CreateTaskForm extends StatefulWidget {
@@ -136,7 +138,13 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
             height: 20,
           ),
           CustomButton(
-            onPressed: () {
+            onPressed: () async {
+
+              await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).collection("tasks").add({
+                "title": "tezak hamra",
+                "description": "very very red"
+              });
+
               setState(() {
                 autovalidateMode = AutovalidateMode.always;
               });

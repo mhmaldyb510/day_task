@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -57,13 +60,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'day-task-fd751.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAlBY8zetWk5gskSM_gWSPblDnOFCuMzCc',
-    appId: '1:993079830678:ios:99d741c1e33fa4a41ffab7',
-    messagingSenderId: '993079830678',
-    projectId: 'day-task-fd751',
-    storageBucket: 'day-task-fd751.firebasestorage.app',
-    iosClientId: '993079830678-m2vsfc4m9otamfcevah76o712e0qf5vi.apps.googleusercontent.com',
-    iosBundleId: 'com.example.dayTask',
-  );
 }
