@@ -109,21 +109,26 @@ class _SignUpViewState extends State<SignUpView> {
                         height: 20,
                       ),
                       CustomButton(
-                        onPressed: () {
+                        onPressed: () async {
                           try {
-                            signInWithGoogle();
-                             Navigator.pushReplacementNamed(
-                              context,
-                              '/main_scaffold',
-                            );
+                            await signInWithGoogle();
+                            if (context.mounted) {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                '/main_scaffold',
+                              );
+                            }
                           } on Exception catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(e.toString()),
-                              ),
-                            );
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(e.toString()),
+                                ),
+                              );
+                            }
                           }
                         },
+                        width: MediaQuery.sizeOf(context).width,
                         color: kBackgroundColor,
                         side: const BorderSide(color: Colors.white, width: 2),
                         child: const Row(

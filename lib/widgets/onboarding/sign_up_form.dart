@@ -13,7 +13,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _LogInFormState extends State<SignUpForm> {
-  String? name,email, password;
+  String? name, email, password;
   final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -37,7 +37,7 @@ class _LogInFormState extends State<SignUpForm> {
             height: 8,
           ),
           CustomTextFormField(
-            icon: Icons.email,
+            prefixIcon: Icons.email,
             hintText: 'Mohamed Naser Aldeeb',
             textInputAction: TextInputAction.next,
             onChanged: (p0) => name = p0,
@@ -65,8 +65,7 @@ class _LogInFormState extends State<SignUpForm> {
             height: 8,
           ),
           CustomTextFormField(
-            
-            icon: Icons.email,
+            prefixIcon: Icons.email,
             hintText: 'example@daytask.com',
             textInputAction: TextInputAction.next,
             onChanged: (p0) => email = p0,
@@ -97,7 +96,7 @@ class _LogInFormState extends State<SignUpForm> {
             height: 8,
           ),
           CustomTextFormField(
-            icon: Icons.lock,
+            prefixIcon: Icons.lock,
             hintText: '********',
             isPassword: true,
             textInputAction: TextInputAction.done,
@@ -113,23 +112,22 @@ class _LogInFormState extends State<SignUpForm> {
             height: 20,
           ),
           BlocListener<SignUpCubit, SignUpState>(
-            listener: (context, state) {
-              
-            },
+            listener: (context, state) {},
             child: CustomButton(
               onPressed: () {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
-                  if(_formKey.currentState!.validate()){
+                  if (_formKey.currentState!.validate()) {
                     context.read<SignUpCubit>().signUp(
-                      email: email!,
-                      password: password!,
-                      name: name!,
-                    );
+                          email: email!,
+                          password: password!,
+                          name: name!,
+                        );
                   }
                 });
               },
               color: kPrimaryColor,
+              width: MediaQuery.sizeOf(context).width,
               child: const Text(
                 'Sign Up',
                 style: TextStyle(

@@ -18,32 +18,24 @@ class SplashView extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/logo.png',
-                width: 75,
+                width: MediaQuery.sizeOf(context).width * 0.2,
               ),
               const Spacer(),
-              Expanded(
-                flex: 26,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/splash_image.png',
-                  ),
-                ),
+              Image.asset(
+                'assets/images/splash_image.png',
               ),
-              const Spacer(
-                flex: 2,
-              ),
+              const Spacer(),
               RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   text: 'Manage ',
                   style: TextStyle(
                     height: 1,
                     fontFamily: 'Pilat Extended',
                     color: Colors.white,
-                    fontSize: 60,
+                    fontSize: MediaQuery.of(context).size.width * 0.148,
                     fontWeight: FontWeight.bold,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
                       text: 'your\n',
                     ),
@@ -59,11 +51,9 @@ class SplashView extends StatelessWidget {
                   ],
                 ),
               ),
-              const Spacer(
-                flex: 2,
-              ),
+              const Spacer(),
               CustomButton(
-                width: double.infinity,
+                width: MediaQuery.sizeOf(context).width,
                 onPressed: () {
                   Navigator.pushNamed(context, '/log_in');
                 },

@@ -22,10 +22,10 @@ class HomeView extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
@@ -44,9 +44,14 @@ class HomeView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/images/profile.png'),
+                    InkWell(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/profile_view'),
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage:
+                            AssetImage('assets/images/profile.png'),
+                      ),
                     ),
                   ],
                 ),

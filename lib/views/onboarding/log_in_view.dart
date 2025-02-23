@@ -62,7 +62,7 @@ class _LogInViewState extends State<LogInView> {
                         alignment: Alignment.center,
                         child: Image.asset(
                           'assets/images/logo.png',
-                          width: 100,
+                          width: MediaQuery.sizeOf(context).width * 0.3,
                         ),
                       ),
                       const SizedBox(
@@ -109,21 +109,26 @@ class _LogInViewState extends State<LogInView> {
                         height: 20,
                       ),
                       CustomButton(
-                        onPressed: () {
+                        onPressed: () async {
                           try {
-                            signInWithGoogle();
-                            Navigator.pushReplacementNamed(
-                              context,
-                              '/main_scaffold',
-                            );
+                            await signInWithGoogle();
+                            if (context.mounted) {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                '/main_scaffold',
+                              );
+                            }
                           } on Exception catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(e.toString()),
-                              ),
-                            );
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(e.toString()),
+                                ),
+                              );
+                            }
                           }
                         },
+                        width: MediaQuery.sizeOf(context).width,
                         color: kBackgroundColor,
                         side: const BorderSide(color: Colors.white, width: 2),
                         child: const Row(

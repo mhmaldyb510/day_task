@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final Color color;
-  final IconData? icon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final String? hintText;
   final bool isPassword;
   final TextInputAction? textInputAction;
@@ -12,10 +13,13 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     this.color = kSecondaryColor,
-    this.icon,
+    this.prefixIcon,
     this.hintText,
     this.isPassword = false,
-    this.textInputAction, this.validator, this.onChanged,
+    this.textInputAction,
+    this.validator,
+    this.onChanged,
+    this.suffixIcon,
   });
 
   @override
@@ -50,7 +54,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           fontSize: 18,
         ),
         prefixIcon: Icon(
-          widget.icon,
+          widget.prefixIcon,
           color: Colors.white,
         ),
         suffixIcon: widget.isPassword
@@ -65,7 +69,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   color: Colors.white,
                 ),
               )
-            : null,
+            : Icon(
+                widget.suffixIcon,
+                color: Colors.white,
+              ),
         filled: true,
         fillColor: kSecondaryColor,
         border: const OutlineInputBorder(

@@ -38,7 +38,7 @@ class _LogInFormState extends State<LogInForm> {
             height: 8,
           ),
           CustomTextFormField(
-            icon: Icons.email,
+            prefixIcon: Icons.email,
             hintText: 'example@daytask.com',
             textInputAction: TextInputAction.next,
             onChanged: (p0) => email = p0,
@@ -69,7 +69,7 @@ class _LogInFormState extends State<LogInForm> {
             height: 8,
           ),
           CustomTextFormField(
-            icon: Icons.lock,
+            prefixIcon: Icons.lock,
             hintText: '********',
             isPassword: true,
             textInputAction: TextInputAction.done,
@@ -110,6 +110,7 @@ class _LogInFormState extends State<LogInForm> {
                     .logIn(email: email!, password: password!);
               }
             },
+            width: MediaQuery.sizeOf(context).width,
             color: kPrimaryColor,
             child: const Text(
               'Log In',
