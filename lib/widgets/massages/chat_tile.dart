@@ -1,4 +1,5 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/chat/chat_view.dart';
 import 'package:flutter/material.dart';
 
 class ChatTile extends StatelessWidget {
@@ -16,12 +17,16 @@ class ChatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed('/chat_view', arguments: name),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => ChatView(name: name),
+        ),
+      ),
       child: ListTile(
         contentPadding: const EdgeInsets.all(8),
-        leading:  CircleAvatar(
+        leading: CircleAvatar(
           backgroundImage: AssetImage(
-            image
+            image,
           ),
         ),
         title: Text(

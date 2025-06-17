@@ -4,10 +4,10 @@ import 'package:day_task/widgets/chat/chat_bubble.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-const String chatViewRoute = '/chat_view';
 
 class ChatView extends StatefulWidget {
-  const ChatView({super.key});
+  const ChatView({super.key, required this.name});
+  final String name;
 
   @override
   State<ChatView> createState() => _ChatViewState();
@@ -38,11 +38,10 @@ class _ChatViewState extends State<ChatView> {
 
   @override
   Widget build(BuildContext context) {
-    final String name = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          name,
+          widget.name,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 16,

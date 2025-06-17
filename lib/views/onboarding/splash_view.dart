@@ -1,8 +1,8 @@
 import 'package:day_task/constants.dart';
+import 'package:day_task/views/onboarding/log_in_view.dart';
 import 'package:day_task/widgets/misc/custom_button.dart';
 import 'package:flutter/material.dart';
 
-const String splashViewRoute = '/splash';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -55,7 +55,12 @@ class SplashView extends StatelessWidget {
               CustomButton(
                 width: MediaQuery.sizeOf(context).width,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/log_in');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LogInView(),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Let\'s Start',

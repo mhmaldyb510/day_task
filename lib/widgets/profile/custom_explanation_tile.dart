@@ -14,7 +14,7 @@ class CustomExplanationTile extends StatelessWidget {
         leadingIcon,
         color: kTextColor,
       ),
-      title: Text(title, style: TextStyle(color: Colors.white)),
+      title: Text(title, style: const TextStyle(color: Colors.white)),
       iconColor: kTextColor,
       collapsedIconColor: kTextColor,
       backgroundColor: kSecondaryColor,

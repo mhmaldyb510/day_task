@@ -6,7 +6,6 @@ import 'package:day_task/widgets/profile/profile_app_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-const String profileViewRoute = '/profile_view';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -99,11 +98,7 @@ class ProfileView extends StatelessWidget {
             CustomButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/splash',
-                  (route) => false,
-                );
+                Navigator.pop(context);
               },
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,

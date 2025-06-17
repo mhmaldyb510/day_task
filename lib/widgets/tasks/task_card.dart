@@ -1,4 +1,5 @@
 import 'package:day_task/models/task_model.dart';
+import 'package:day_task/views/tasks/task_details.dart';
 import 'package:day_task/widgets/tasks/task_progress_indicator.dart';
 import 'package:day_task/widgets/tasks/avatar_list.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,11 @@ class TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed('/task_details', arguments: task);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TaskDetails(task: task),
+          ),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 16),
@@ -71,8 +76,10 @@ class TaskCard extends StatelessWidget {
                   ],
                 ),
                 TaskProgressIndicator(
-                  progressValue: (task.completed.length /
-                          (task.notCompleted.length + task.completed.length)) *
+                  progressValue: (task.subTasks
+                              .where((element) => element.isCompleted)
+                              .length /
+                          (task.subTasks.length)) *
                       100,
                 )
               ],

@@ -21,11 +21,23 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
       userCredential.user?.updateProfile(displayName: name);
 
-      await FirebaseFirestore.instance.collection("users").doc(userCredential.user?.uid).set({});
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(userCredential.user?.uid)
+          .collection('tasks')
+          .doc()
+          .set({});
 
       emit(SignUpSuccess());
     } on FirebaseAuthException catch (e) {
       emit(SignUpError(e.message!));
     }
+  }
+
+  void holding() {
+    emit(SignUpLoading());
+  }
+  void unHolding() {
+    emit(SignUpInitial());
   }
 }

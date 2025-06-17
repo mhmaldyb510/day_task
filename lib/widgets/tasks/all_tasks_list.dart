@@ -14,9 +14,8 @@ class _AllTasksListState extends State<AllTasksList> {
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
-      itemCount: widget.task.completed.length + widget.task.notCompleted.length,
+      itemCount: widget.task.subTasks.length,
       itemBuilder: (context, index) {
-        var all = widget.task.completed + widget.task.notCompleted;
         return Padding(
           padding: const EdgeInsets.only(
             left: 20,
@@ -26,22 +25,16 @@ class _AllTasksListState extends State<AllTasksList> {
           child: ListTile(
             tileColor: const Color(0xff465a65),
             title: Text(
-              all[index],
+              widget.task.subTasks[index].title,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
-              ),
-            ),
+              ),  ),
             trailing: GestureDetector(
               onTap: () {
                 setState(() {
-                  if (widget.task.completed.contains(all[index])) {
-                    widget.task.notCompleted.add(all[index]);
-                    widget.task.completed.remove(all[index]);
-                  } else {
-                    widget.task.completed.add(all[index]);
-                    widget.task.notCompleted.remove(all[index]);
-                  }
+                  widget.task.subTasks[index].isCompleted =
+                      !widget.task.subTasks[index].isCompleted;
                 });
               },
               child: Container(
@@ -52,7 +45,7 @@ class _AllTasksListState extends State<AllTasksList> {
                   shape: BoxShape.rectangle,
                 ),
                 child: Icon(
-                  widget.task.completed.contains(all[index])
+                  widget.task.subTasks[index].isCompleted
                       ? Icons.check_circle_outline_rounded
                       : Icons.circle_outlined,
                 ),

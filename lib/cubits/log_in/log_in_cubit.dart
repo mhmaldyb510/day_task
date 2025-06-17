@@ -19,4 +19,10 @@ class LogInCubit extends Cubit<LogInState> {
       emit(LogInFailure(e.toString()));
     }
   }
+  void holding() {
+    emit(LogInLoading());
+  }
+  void unHolding() {
+    emit(LogInInitial());
+  }
 }

@@ -2,7 +2,6 @@ import 'package:day_task/constants.dart';
 import 'package:day_task/widgets/tasks/create_task_form.dart';
 import 'package:flutter/material.dart';
 
-const String addTaskViewRoute = '/add_task_view';
 
 class AddTaskView extends StatelessWidget {
   const AddTaskView({super.key});

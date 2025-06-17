@@ -1,11 +1,12 @@
 import 'package:day_task/constants.dart';
 import 'package:day_task/models/task_model.dart';
+import 'package:day_task/views/profile/profile_view.dart';
 import 'package:day_task/widgets/tasks/completed_task_card.dart';
 import 'package:day_task/widgets/tasks/task_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const String homeViewRoute = '/home_view';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -25,10 +26,10 @@ class HomeView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Welcome Back!',
                           style: TextStyle(
                             fontSize: 12,
@@ -36,8 +37,9 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Mohamed Naser',
-                          style: TextStyle(
+                          FirebaseAuth.instance.currentUser!.displayName ??
+                              'User',
+                          style: const TextStyle(
                             fontSize: 24,
                             color: Colors.white,
                           ),
@@ -45,8 +47,12 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: () =>
-                          Navigator.pushNamed(context, '/profile_view'),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfileView(),
+                        ),
+                      ),
                       child: const CircleAvatar(
                         radius: 20,
                         backgroundImage:
@@ -135,30 +141,26 @@ class HomeView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return TaskCard(
                       task: TaskModel(
-                          title: 'Task Management app with Flutter',
-                          description:
-                              'An advanced task management app with Flutter to manage projects and divide it into small tasks.',
-                          startDate: DateTime.now(),
-                          completed: [
-                            'Home page',
-                            'Calendar page',
-                            'Messages page',
-                            'Notifications page',
-                            'Firebase authentication',
-                            'on boarding',
-                          ],
-                          notCompleted: [
-                            'Task info page',
-                            'store Tasks in firebase',
-                            'Massaging view',
-                            'New Chat view',
-                            'Create new project',
-                            'Profile page',
-                            'App Logic',
-                          ],
-                          collaborators: const [
-                            'assets/images/profile.png',
-                          ]),
+                        title: 'Task Management app with Flutter',
+                        description:
+                            'An advanced task management app with Flutter to manage projects and divide it into small tasks.',
+                        startDate: DateTime.now(),
+                        subTasks: [
+                          SubTaskModel(
+                            title: 'Home page',
+                            isCompleted: true,
+                            taskId: '1',
+                          ),
+                          SubTaskModel(
+                            title: 'Profile page',
+                            isCompleted: false,
+                            taskId: '1',
+                          ),
+                        ],
+                        collaborators: const [
+                          'assets/images/profile.png',
+                        ],
+                      ),
                     );
                   },
                 ),

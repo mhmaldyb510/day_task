@@ -3,6 +3,7 @@ import 'package:day_task/views/calender/calender_view.dart';
 import 'package:day_task/views/massages/messages_view.dart';
 import 'package:day_task/views/home/home_view.dart';
 import 'package:day_task/views/notifications/notifications_view.dart';
+import 'package:day_task/views/tasks/add_task_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -72,9 +73,11 @@ class _MainScaffoldState extends State<MainScaffold> {
               ? setState(() {
                   _index = value;
                 })
-              : Navigator.pushNamed(
+              : Navigator.push(
                   context,
-                  '/add_task_view',
+                  MaterialPageRoute(
+                    builder: (context) => const AddTaskView(),
+                  ),
                 );
         },
       ),

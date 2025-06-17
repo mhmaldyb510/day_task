@@ -7,16 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
-const String taskDetailsViewRoute = '/task_details';
+
 
 class TaskDetails extends StatelessWidget {
-  const TaskDetails({super.key});
+  const TaskDetails({super.key, required this.task});
+  final TaskModel task;
 
   @override
   Widget build(BuildContext context) {
-    final TaskModel task =
-        ModalRoute.of(context)!.settings.arguments as TaskModel? ??
-            TaskModel(startDate: DateTime.now());
+
+         
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -188,9 +188,8 @@ class TaskDetails extends StatelessWidget {
                       ),
                       const Spacer(),
                       TaskProgressIndicator(
-                        progressValue: (task.completed.length /
-                                (task.completed.length +
-                                    task.notCompleted.length)) *
+                        progressValue: (task.subTasks.where((element) => element.isCompleted).length /
+                                (task.subTasks.length)) *
                             100,
                       ),
                     ],
